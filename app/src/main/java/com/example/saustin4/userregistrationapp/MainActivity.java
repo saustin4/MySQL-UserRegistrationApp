@@ -68,7 +68,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             ProgressDialog loading;
             RegisterUserClass ruc = new RegisterUserClass();
 
-//dvd
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
