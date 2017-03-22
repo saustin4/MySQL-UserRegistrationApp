@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         buttonRegister.setOnClickListener(this);
     }
-
+//---
     @Override
     public void onClick(View v) {
         if(v == buttonRegister){
