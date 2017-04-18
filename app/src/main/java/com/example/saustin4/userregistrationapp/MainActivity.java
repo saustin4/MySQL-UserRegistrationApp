@@ -1,24 +1,17 @@
 package com.example.saustin4.userregistrationapp;
-// saustin4
-        import android.app.ProgressDialog;
-        import android.os.AsyncTask;
-        import android.support.v7.app.AppCompatActivity;
-        import android.os.Bundle;
-        import android.view.Menu;
-        import android.view.MenuItem;
-        import android.view.View;
-        import android.widget.Button;
-        import android.widget.EditText;
-        import android.widget.Toast;
 
-        import java.io.BufferedReader;
-        import java.io.InputStreamReader;
-        import java.io.UnsupportedEncodingException;
-        import java.net.HttpURLConnection;
-        import java.net.URL;
-        import java.net.URLEncoder;
-        import java.util.HashMap;
-        import java.util.Map;
+
+        import android.app.ProgressDialog;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -28,8 +21,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText editTextEmail;
 
     private Button buttonRegister;
+    private Button buttonLogin;
 
-    private static final String REGISTER_URL = "http://saustin4.com/UserRegistration/register.php";
+    private static final String REGISTER_URL = "http://www.saustin4.com/UserRegistration/register.php";
 
 
     @Override
@@ -43,14 +37,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
 
         buttonRegister = (Button) findViewById(R.id.buttonRegister);
+        buttonLogin = (Button) findViewById(R.id.buttonLogin);
 
         buttonRegister.setOnClickListener(this);
+        buttonLogin.setOnClickListener(this);
+
     }
-//---
+
     @Override
     public void onClick(View v) {
         if(v == buttonRegister){
             registerUser();
+        }
+        if(v == buttonLogin){
+            Intent intent = new Intent(this, ActivityLogin.class);
+            startActivity(intent);
         }
     }
 
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         class RegisterUser extends AsyncTask<String, Void, String>{
             ProgressDialog loading;
             RegisterUserClass ruc = new RegisterUserClass();
+
 
             @Override
             protected void onPreExecute() {
